@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: cloud-service1
+  name: cloud-service1
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: cloud-service1
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: cloud-service1
+    spec:
+      containers:
+        - image: gcr.io/bustling-opus-262223/github.com/oulievancs/cloud_computing1
+          imagePullPolicy: IfNotPresent
+          name: cloud-computing1-1
+---
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  labels:
+    app: cloud-service1
+  name: cloud-service1-hpa-avor
+  namespace: default
+spec:
+  maxReplicas: 5
+  metrics:
+    - resource:
+        name: cpu
+        targetAverageUtilization: 80
+      type: Resource
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: cloud-service1
+
