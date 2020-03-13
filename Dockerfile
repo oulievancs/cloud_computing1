@@ -11,9 +11,11 @@ WORKDIR /app
 COPY . /app
 
 # Set instructions on build.
-ONBUILD ADD packages.json /app/
+ONBUILD ADD package.json /app/
 ONBUILD RUN npm install
 ONBUILD ADD . /app
+
+RUN npm install
 
 #Install any needed packages specified in requirements.txt 
 #RUN pip install --trusted-host pypi.python.org -r requirements.txt
@@ -25,4 +27,4 @@ EXPOSE 80
 ENV NAME World
 
 #Run app.py when the conatiner launches
-CMD ["node", "server.js"]
+CMD ["npm", "start"]
