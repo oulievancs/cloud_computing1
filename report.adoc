@@ -1,0 +1,22 @@
+= 1st Lab - Cloud Computing and Distributed Systems
+
+*_Authors_*
+|===
+Oulis Evangelos <cs151051@uniwa.gr>
+===|
+
+//Metadata:
+:description: Cloud Computing, 1st lab exercise
+:keywords: Cloud Computing
+:toc: right
+:toc-title: Content Array
+:toc-levels: 4
+:source-hilighter: highlight
+:icons: font
+
+
+==Initiation of 1st Exercise
+First of all we have to initiate out cluster configuration file that are Dockerfile, package.json, dockerignore and
+the server.js . To begin with, Dockerfile is a txt file that includes the instructions that required to perform the final docker
+image, some of these instructions are MKDIR to make the directory to include the final docker application, COPY to copy all the
+files that constitutes the image into the application image's files, EXPOSE to open the ports to the application and create
