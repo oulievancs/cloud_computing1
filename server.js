@@ -19,9 +19,5 @@ app.get("/", (req, res) => {
 	res.send('Hello world ' + os.hostname() + ', Current Date: ' + date + '/' + month + '/' + year + ' Hour: ' + hours + ':' + minutes + '.\n');
 });
 
-app.get("/love", (req, res) => {
-	res.send("<html><head><title>Love</title></head><body><h2>Love</h2><p>I love you so much!!!</p><p><3 Your habibi</p></body></html>");
-});
-
 app.listen(PORT, HOST);
 console.log(`Running on http://${HOST}:${PORT}`);
